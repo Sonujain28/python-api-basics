@@ -115,70 +115,10 @@ if __name__ == "__main__":
 #             https://api.open-meteo.com/v1/forecast?latitude=28.61&longitude=77.23&current_weather=true
 #             Challenge: Let user input city name (you'll need to find lat/long)
 
-    print("\n=== exercise 1 ===\n")
-    def get_city_weather():
-        city=input("Enter city name: ")
-        url=f"https://api.open-meteo.com/v1/search?name={city}&count=1&language=en&format=json"
-        response=requests.get(url)
-        data=response.json()
-        print(data)
-
-        city_found=data['results'][0]
-        latitude=city_found['latitude']
-        longitude=city_found['longitude']
-        print(f"Latitude: {latitude}, Longitude: {longitude}")
-        get_city_weather()
 # Exercise 2: Add a function to search todos by completion status
 #             URL: https://jsonplaceholder.typicode.com/todos
 #             Params: completed=true or completed=false
-#import requests
 
-def search_todos_by_status():
-    print("\n=== Todo Search ===\n")
-
-    status = input("Enter status (true / false): ")
-
-    url = f"https://jsonplaceholder.typicode.com/todos?completed={status}"
-
-    response = requests.get(url)
-
-    if response.status_code == 200:
-        todos = response.json()
-
-        if todos:
-            for i, todo in enumerate(todos[:10], 1):
-                print(f"{i}. {todo['title']}")
-        else:
-            print("No todos found")
-    else:
-        print("Error fetching todos")
-
-search_todos_by_status()
 
 # Exercise 3: Add input validation (check if user_id is a number)
-import requests
 
-def get_user_info():
-    print("\n=== User Information Lookup ===\n")
-
-    user_id = input("Enter user ID (1-10): ")
-
-    # 111 Check if input is a number
-    if not user_id.isdigit():
-        print("Error: Please enter a valid number!")
-        return
-
-    url = f"https://jsonplaceholder.typicode.com/users/{user_id}"
-    response = requests.get(url)
-
-    if response.status_code == 200:
-        data = response.json()
-        print(f"\n--- User #{user_id} Info ---")
-        print(f"Name: {data['name']}")
-        print(f"Email: {data['email']}")
-        print(f"Phone: {data['phone']}")
-        print(f"Website: {data['website']}")
-    else:
-        print(f"\nUser with ID {user_id} not found!")
-
-get_user_info()
