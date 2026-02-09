@@ -150,30 +150,13 @@ if __name__ == "__main__":
 #
 # Exercise 1: Add retry logic - if request fails, try again up to 3 times
 #             Hint: Use a for loop and time.sleep() between retries
-import requests
-import time
 
-for i in range(3):
-    try:
-        response = requests.get("https://api.coinpaprika.com/v1/tickers/btc-bitcoin")
-        print("Success")
-        break
-    except:
-        print("Failed, trying again...")
-        time.sleep(1)
 
 #
 # Exercise 2: Create a function that validates crypto response
 #             Check that 'quotes' and 'USD' keys exist before accessing
-def check_data(data):
-    return "quotes" in data and "USD" in data["quotes"]
-data = {"quotes": {"USD": {"price": 45000}}}
-print(check_data(data))   # True
+
 
 # Exercise 3: Add logging to track all API requests
-#             import logging
-#             logging.basicConfig(level=logging.INFO)
-import logging
 
-logging.basicConfig(level=logging.INFO)
-logging.info("API request sent")
+      
