@@ -15,7 +15,8 @@ url = "https://jsonplaceholder.typicode.com/posts/1"
 
 # Step 2: Make a GET request
 response = requests.get(url)
-
+print(type(response))
+print(response)  
 # Step 3: Print the response
 print("=== Basic API Request ===\n")
 print(f"URL: {url}")
@@ -29,9 +30,20 @@ print(response.json())
 #
 # Exercise 1: Change the URL to fetch post number 5
 #             Hint: Change /posts/1 to /posts/5
-#
+url = "https://jsonplaceholder.typicode.com/posts/5"
+response = requests.get(url)
+print(response.json())
+
 # Exercise 2: Fetch a list of all users
 #             URL: https://jsonplaceholder.typicode.com/users
-#
+url = "https://jsonplaceholder.typicode.com/users"
+response = requests.get(url)
+print(response.json())
+
 # Exercise 3: What happens if you fetch a post that doesn't exist?
 #             Try: https://jsonplaceholder.typicode.com/posts/999
+url = "https://jsonplaceholder.typicode.com/posts/999"
+response = requests.get(url)
+
+print(response.status_code)
+print(response.json())

@@ -15,7 +15,7 @@ print("=== Understanding Status Codes ===\n")
 
 # Example 1: Successful request (200 OK)
 print("--- Example 1: Valid Request ---")
-url_valid = "https://jsonplaceholder.typicode.com/posts/1"
+url_valid = "https://jsonplaceholder.typicode.com/posts/"
 response = requests.get(url_valid)
 
 print(f"URL: {url_valid}")
@@ -35,13 +35,15 @@ print(f"Found? {response_404.status_code == 200}")
 
 # Example 3: Parsing JSON Data
 print("\n--- Example 3: Parsing JSON ---")
-url = "https://jsonplaceholder.typicode.com/users/1"
+url = "https://jsonplaceholder.typicode.com/users/5"
 response = requests.get(url)
 
 # Convert response to Python dictionary
 data = response.json()
 
 # Access specific fields
+print(f"phone: {data['phone']}")
+print(f"website: {data['website']}")
 print(f"Full Name: {data['name']}")
 print(f"Username: {data['username']}")
 print(f"Email: {data['email']}")
@@ -51,11 +53,11 @@ print(f"Company: {data['company']['name']}")
 
 # Example 4: Working with a list of items
 print("\n--- Example 4: List of Items ---")
-url_list = "https://jsonplaceholder.typicode.com/posts?userId=1"
+url_list = "https://jsonplaceholder.typicode.com/posts?userId=5"
 response = requests.get(url_list)
 posts = response.json()
 
-print(f"User 1 has {len(posts)} posts:")
+print(f"User 5 has {len(posts)} posts:")
 for i, post in enumerate(posts[:3], 1):  # Show first 3
     print(f"  {i}. {post['title'][:40]}...")
 
@@ -80,12 +82,34 @@ for code, meaning in status_codes.items():
 #
 # Exercise 1: Fetch user with ID 5 and print their phone number
 #             URL: https://jsonplaceholder.typicode.com/users/5
-#
+
+url = "https://jsonplaceholder.typicode.com/users/5"
+response = requests.get(url)
+data = response.json()
+print(f"Phone number of user 5: {data['phone']}")
+
 # Exercise 2: Check if a resource exists before printing data
 #             if response.status_code == 200:
 #                 print(data)
 #             else:
 #                 print("Resource not found!")
+print("exercise 2:")
+url = "https://jsonplaceholder.typicode.com/users/10"
+response = requests.get(url)
+data = response.json()
+if response.status_code == 200:
+                print(data)
+else:
+                print("Resource not found!")
 #
 # Exercise 3: Count how many comments are on post ID 1
 #             URL: https://jsonplaceholder.typicode.com/posts/1/comments
+url = "https://jsonplaceholder.typicode.com/users"
+response = requests.get(url)
+user = response.json()
+print(len(user))
+
+url = "https://jsonplaceholder.typicode.com/posts/1/comments"
+response = requests.get(url)
+comments = response.json()
+print(len(comments))
