@@ -251,72 +251,25 @@ if __name__ == "__main__":
 #
 # Exercise 1: Add more cities to the CITIES dictionary
 #             Find coordinates at: https://www.latlong.net/
-CITIES = {
-    "Delhi": (28.6139, 77.2090),
-    "Mumbai": (19.0760, 72.8777),
-    "Pune": (18.5204, 73.8567),
-    "Bangalore": (12.9716, 77.5946),
-    "Chennai": (13.0827, 80.2707)
-}
 
 #
 # Exercise 2: Create a function that compares prices of multiple cryptos
 #             Display them in a formatted table
-def compare_prices(crypto_data):
-    print("Crypto     Price (USD)")
-    print("----------------------")
-    for name, price in crypto_data.items():
-        print(f"{name:<10} {price}")
 
-prices = {
-    "Bitcoin": 45000,
-    "Ethereum": 3000,
-    "Dogecoin": 0.08
-}
-
-compare_prices(prices)
 
 # Exercise 3: Add POST request example
 #             Use: https://jsonplaceholder.typicode.com/posts
 #             Send: requests.post(url, json={"title": "My Post", "body": "Content"})
-import requests
-
-url = "https://jsonplaceholder.typicode.com/posts"
-
-data = {
-    "title": "My Post",
-    "body": "Content"
-}
-
-response = requests.post(url, json=data)
-print(response.json())
 
 # Exercise 4: Save results to a JSON file
 #             import json
 #             with open("results.json", "w") as f:
 #                 json.dump(data, f, indent=2)
-import json
 
-data = {
-    "city": "Delhi",
-    "temperature": 30
-}
-
-with open("results.json", "w") as f:
-    json.dump(data, f, indent=2)
-
-print("Saved to results.json")
 
 # Exercise 5: Add API key support for OpenWeatherMap
 #             Sign up at: https://openweathermap.org/api
 #             Use environment variables:
 #             import os
 #             api_key = os.environ.get("OPENWEATHER_API_KEY")
-import os
 
-api_key = os.environ.get("OPENWEATHER_API_KEY")
-
-if api_key:
-    print("API Key Loaded")
-else:
-    print("API Key Not Found")
